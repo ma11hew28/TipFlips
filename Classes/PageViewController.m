@@ -21,15 +21,18 @@
 	imageView.image = [UIImage imageNamed:@"background.jpg"];
 	imageView.clearsContextBeforeDrawing = NO;
 	imageView.opaque = YES;
-//	self.wantsFullScreenLayout = YES;
 
-	numView = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 39.0f, 120.0f, 40.0f)];
+	UILabel *localNumView = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 39.0f, 120.0f, 40.0f)];
+	self.numView = localNumView;
+	[localNumView release];
 	numView.clearsContextBeforeDrawing = NO;
 	numView.backgroundColor = [UIColor orangeColor];
 	[imageView addSubview:numView];
 	[numView release];
 
-	tipView = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 320.0f)];
+	UILabel *localTipView = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 320.0f)];
+	self.tipView = localTipView;
+	[localTipView release];
 	tipView.clearsContextBeforeDrawing = NO;
 	tipView.backgroundColor = [UIColor lightGrayColor];
 	[imageView addSubview:tipView];
@@ -117,7 +120,6 @@
 	// Update tip text
 	tipIndex = index;
 	numView.text = [NSString stringWithFormat:@"Tip %d:", tipIndex+1];
-	NSLog(@"self.view %@", self.view);
 	tipView.text = [tips objectAtIndex:tipIndex];
 	RESET_TIP_VIEW_SIZE;
 
@@ -174,15 +176,13 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-	tips = nil;
+	self.tips = nil;
 	tipView = nil;
 	numView = nil;
 }
 
 - (void)dealloc {
 	[tips release];
-	[tipView release];
-	[numView release];
     [super dealloc];
 }
 
