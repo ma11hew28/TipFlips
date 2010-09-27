@@ -17,8 +17,9 @@
 - (void)loadView {
 	CGRect navFrame = [[UIScreen mainScreen] applicationFrame];
 	navFrame.size.height -= self.navigationController.navigationBar.frame.size.height;
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:navFrame];
+	UIImageView *imageView = [[UIImageView alloc] initWithFrame:navFrame];
 	imageView.image = [UIImage imageNamed:@"background.jpg"];
+	imageView.backgroundColor = [UIColor blackColor];
 	imageView.clearsContextBeforeDrawing = NO;
 	imageView.opaque = YES;
 
